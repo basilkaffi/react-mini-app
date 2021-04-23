@@ -1,10 +1,10 @@
 import { useState } from "react";
 function Search(props) {
-  const { getInput } = props;
+  const { getInput, search } = props;
   const [input, setInput] = useState("");
-  const sendQuery = (e) => {
+  const start = (e) => {
     e.preventDefault();
-    getInput(1, input);
+    search(1);
   };
   return (
     <div className="w-full h-10 flex items-center bg-white rounded-md text-gray-600 mt-16">
@@ -24,13 +24,16 @@ function Search(props) {
           />
         </svg>
       </div>
-      <form onSubmit={sendQuery} className="w-full">
+      <form onSubmit={start} className="w-full">
         <input
           className="py-1 font-roboto-slab w-full rounded-md focus:outline-none"
           type="text"
           placeholder="search users"
           value={input}
-          onChange={(e) => setInput(e.target.value)}
+          onChange={(e) => {
+            setInput(e.target.value);
+            getInput(e.target.value);
+          }}
         />
       </form>
     </div>
