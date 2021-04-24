@@ -16,7 +16,7 @@ function DetailPage(props) {
           <Navbar />
           <div className="w-full flex flex-col justify-center items-center md:flex-row mt-10 px-4">
             <Bio data={data} />
-            {data.repos_url && <RepoContainer url={data.repos_url} />}
+            <RepoContainer url={data.repos_url} />
           </div>
           <Footer />
         </div>

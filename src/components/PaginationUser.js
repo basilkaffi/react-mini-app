@@ -85,61 +85,67 @@ function App(props) {
         <div className="w-full" style={{ height: "45vh" }}></div>
       )}
       {users.length > 0 && (
-        <div className="grid xs:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 p-2 pt-12">
-          {pagination.map((user) => (
-            <Card key={user.id} user={user} />
-          ))}
-        </div>
-      )}
-      <div className="w-full flex">
-        <div className="m-auto w-max flex justify-evenly items-center text-gray-400">
-          <div className="mr-4" ref={leftButton} onClick={() => sendId("back")}>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-6 w-6"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M11 19l-7-7 7-7m8 14l-7-7 7-7"
-              />
-            </svg>
+        <>
+          <div className="grid xs:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 p-2 pt-12">
+            {pagination.map((user) => (
+              <Card key={user.id} user={user} />
+            ))}
           </div>
-          {pages().map((page) => (
-            <div
-              key={page}
-              onClick={() => setIdx(page)}
-              style={activeStyle(page)}
-              className="py-2 px-2 xs:px-4 cursor-pointer transform duration-200 hover:text-blue-600 font-roboto-slab font-semibold text-lg"
-            >
-              {page + 1 + realNextPage * 8}
+          <div className="w-full flex">
+            <div className="m-auto w-max flex justify-evenly items-center text-gray-400">
+              <div
+                className="mr-4"
+                ref={leftButton}
+                onClick={() => sendId("back")}
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-6 w-6"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M11 19l-7-7 7-7m8 14l-7-7 7-7"
+                  />
+                </svg>
+              </div>
+              {pages().map((page) => (
+                <div
+                  key={page}
+                  onClick={() => setIdx(page)}
+                  style={activeStyle(page)}
+                  className="py-2 px-2 xs:px-4 cursor-pointer transform duration-200 hover:text-blue-600 font-roboto-slab font-semibold text-lg"
+                >
+                  {page + 1 + realNextPage * 8}
+                </div>
+              ))}
+              <div
+                className="text-blue-700 cursor-pointer transform duration-300 hover:translate-x-1 ml-4"
+                onClick={() => sendId("next")}
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-6 w-6"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M13 5l7 7-7 7M5 5l7 7-7 7"
+                  />
+                </svg>
+              </div>
             </div>
-          ))}
-          <div
-            className="text-blue-700 cursor-pointer transform duration-300 hover:translate-x-1 ml-4"
-            onClick={() => sendId("next")}
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-6 w-6"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M13 5l7 7-7 7M5 5l7 7-7 7"
-              />
-            </svg>
           </div>
-        </div>
-      </div>
+        </>
+      )}
     </>
   );
 }

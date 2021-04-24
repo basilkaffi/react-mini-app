@@ -7,7 +7,10 @@ function Search(props) {
     search(1);
   };
   return (
-    <div className="w-full h-10 flex items-center bg-white rounded-md text-gray-600 mt-16">
+    <div
+      className="w-full h-10 flex items-center bg-white rounded-md text-gray-600 mt-16"
+      style={{ minWidth: "320px" }}
+    >
       <div className="px-2">
         <svg
           xmlns="http://www.w3.org/2000/svg"

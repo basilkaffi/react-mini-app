@@ -10,6 +10,12 @@ function Bio(props) {
         {data.name ? `${data.name}` : `${data.login}`}
       </div>
       <div className="font-roboto-slab text-xl text-gray-500">{data.login}</div>
+      {!data.name && (
+        <div className="mt-12 text-center font-roboto-slab text-2xl text-gray-700">
+          <p>API rate limit exceeded</p>
+          <p>~data not fetched~</p>
+        </div>
+      )}
       <div className="font-roboto-slab text-gray-700 my-4">{data.bio}</div>
       <div className="grid grid-cols-3 w-2/3">
         {data.following && (
