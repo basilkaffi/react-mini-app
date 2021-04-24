@@ -1,9 +1,11 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
+import { useHistory } from "react-router-dom";
 
 function Card(props) {
   const { user } = props;
   const [data, setData] = useState();
+  const history = useHistory();
   useEffect(() => {
     axios
       .get(`https://api.github.com/users/${user.login}`, {
@@ -19,7 +21,10 @@ function Card(props) {
   return (
     <>
       {!data && (
-        <div className="group m-auto h-56 w-56 shadow-lg rounded-lg hover:shadow-xl transform duration-200 flex flex-col items-center cursor-pointer overflow-y-hidden">
+        <div
+          className="group m-auto h-56 w-56 shadow-lg rounded-lg hover:shadow-xl transform duration-200 flex flex-col items-center cursor-pointer overflow-y-hidden"
+          onClick={() => history.push(`/${user.login}`, { user })}
+        >
           <div className="w-full h-full rounded-lg">
             <img
               alt="profile picture"
@@ -45,7 +50,10 @@ function Card(props) {
         </div>
       )}
       {data && (
-        <div className="group m-auto h-56 w-56 shadow-lg rounded-lg hover:shadow-xl transform duration-200 flex flex-col items-center cursor-pointer overflow-y-hidden">
+        <div
+          className="group m-auto h-56 w-56 shadow-lg rounded-lg hover:shadow-xl transform duration-200 flex flex-col items-center cursor-pointer overflow-y-hidden"
+          onClick={() => history.push(`/${data.login}`, { data })}
+        >
           <div className="w-full h-full rounded-lg">
             <img
               alt="profile picture"
